@@ -30,6 +30,7 @@ public class Bet {
     private String preorder(Tree_node sub_tree, String c){
         String chain;
         chain = "";
+
         if (sub_tree != null){
             chain = c + sub_tree.data.toString() + "\n" + preorder(sub_tree.left, c) + preorder(sub_tree.right, c);
         }
@@ -72,44 +73,28 @@ public class Bet {
 
     private int priority(char c){
         int p=100;
-        switch(c){
-            case '^':
-                p=30;
-                break;
-            case '*':
-            case '/':
-                p=20;
-                break;
-            case '+':
-            case '-':
-                p=10;
-                break;
-            default:
-                p=0;
-        }
+
+        p = switch(c){
+            case '^' -> 30;
+            case '*', '/' -> 20;
+            case '+', '-' -> 10;
+            default -> 0;
+        };
         return p;
     }
 
     private boolean operator_check(char c){
         boolean result;
-        switch(c) {
-            case '(':
-            case ')':
-            case '^':
-            case '*':
-            case '/':
-            case '+':
-            case '-':
-                result = true;
-                break;
-            default:
-                result = false;
-        }
+        result = switch(c) {
+            case '(', ')', '^', '*', '/', '+', '-' -> true;
+            default -> false;
+        };
         return result;
 
     }
 
     private Tree_node create_bet_tree(String chain){
+        chain = chain.replace("**", "^");
         Pile_bet operators_pile;
         Pile_bet expressions_pile;
         Tree_node token;
@@ -129,12 +114,10 @@ public class Bet {
             if(!operator_check(evaluated_c)){
                 expressions_pile.insert(token);
             }
-            else{
+            else
                 switch(evaluated_c){
-                    case '(':
-                        operators_pile.insert(token);
-                        break;
-                    case ')':
+                    case '(' -> operators_pile.insert(token);
+                    case ')' ->{
                         while(!operators_pile.void_pile() && !operators_pile.max_pile().data.equals('(')){
                             op2 = expressions_pile.eliminate();
                             op1 = expressions_pile.eliminate();
@@ -143,8 +126,8 @@ public class Bet {
                             expressions_pile.insert(op);
                         }
                         operators_pile.eliminate();
-                        break;
-                    default:
+                    }
+                    default ->{
                         while(!operators_pile.void_pile() && priority(evaluated_c) <= priority(operators_pile.max_pile().data.toString().charAt(0))){
                             op2 = expressions_pile.eliminate();
                             op1 = expressions_pile.eliminate();
@@ -153,8 +136,9 @@ public class Bet {
                             expressions_pile.insert(op);
                         }
                         operators_pile.insert(token);
+                    }
                 }
-            }
+            
         }
         while(!operators_pile.void_pile()){
             op2 = expressions_pile.eliminate();
@@ -179,23 +163,13 @@ public class Bet {
         }
         else{
             switch(sub_tree.data.toString().charAt(0)){
-                case '^':
-                    acum = acum + Math.pow(evaluate(sub_tree.left), evaluate(sub_tree.right));
-                    break;
-                case '*':
-                    acum = acum + evaluate(sub_tree.left) * evaluate(sub_tree.right);
-                    break;
-                case '/':
-                    acum = acum + evaluate(sub_tree.left) / evaluate(sub_tree.right);
-                    break;
-                case '+':
-                    acum = acum + evaluate(sub_tree.left) + evaluate(sub_tree.right);
-                    break;
-                case '-':
-                    acum = acum + evaluate(sub_tree.left) - evaluate(sub_tree.right);
-                    break;
+                case '^' -> acum = acum + Math.pow(evaluate(sub_tree.left), evaluate(sub_tree.right));
+                case '*' -> acum = acum + evaluate(sub_tree.left) * evaluate(sub_tree.right);
+                case '/' -> acum = acum + evaluate(sub_tree.left) / evaluate(sub_tree.right);
+                case '+' -> acum = acum + evaluate(sub_tree.left) + evaluate(sub_tree.right);
+                case '-' -> acum = acum + evaluate(sub_tree.left) - evaluate(sub_tree.right);
             }
-        }
         return acum;
+        }
     }
 }
