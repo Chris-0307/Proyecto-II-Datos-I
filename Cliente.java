@@ -62,6 +62,9 @@ public class Cliente extends JFrame {
 		contentPane.add(txtPantalla);
 		txtPantalla.setColumns(10);
 		
+        /**
+         * Creat the buttons
+         */
 		
 		JButton btnLimpiar = new JButton("C");
 		btnLimpiar.addActionListener(new ActionListener() {
