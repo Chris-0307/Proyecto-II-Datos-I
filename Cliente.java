@@ -27,7 +27,7 @@ public class Cliente extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Calculadora2 frame = new Calculadora2();
+					Cliente frame = new Cliente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -431,90 +431,32 @@ public class Cliente extends JFrame {
 
 
 		JButton btnIgual = new JButton("=");
-		btnIgual.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String seleccionar;
-				numero2 = Double.parseDouble(txtPantalla.getText());
-				
-				if(operacion == "+") {
-					resultado = numero1+numero2;
-					seleccionar = String.format("%.0f",resultado);
-					txtPantalla.setText(seleccionar);
-				}
-				
-				else if(operacion == "-") {
-					resultado = numero1-numero2;
-					seleccionar = String.format("%.0f",resultado);
-					txtPantalla.setText(seleccionar);
-				}
-				
-				else if(operacion == "*") {
-					resultado = numero1*numero2;
-					seleccionar = String.format("%.0f",resultado);
-					txtPantalla.setText(seleccionar);
-				}
-				
-				else if(operacion == "/") {
-					resultado = numero1/numero2;
-					seleccionar = String.format("%.2f",resultado);
-					txtPantalla.setText(seleccionar);
-				}
-
-                else if(operacion == "%") {
-					resultado = numero1%numero2;
-					seleccionar = String.format("%.2f",resultado);
-					txtPantalla.setText(seleccionar);
-				}
-
-                else if(operacion == "^") {
-					resultado = Math.pow(numero1, numero2);
-					seleccionar = String.format("%.0f",resultado);
-					txtPantalla.setText(seleccionar);
-				}
-
-                else if (operacion.equals("^")) {
-                    resultado = (int) numero1 ^ (int) numero2; // Realizar la operación XOR (como enteros)
-                    seleccionar = String.format("%.0f",resultado);
-					txtPantalla.setText(seleccionar);
-                } 
+        btnIgual.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+				/**
+				 * Obtiene la expresión matemática de txtPantalla
+				 */
+                String expresion = txtPantalla.getText();
                 
-                else if (operacion == "&") {
-                    resultado = (int) numero1 & (int) numero2; // Realizar la operación AND (como enteros)
-                    seleccionar = String.format("%.0f", resultado);
-                    txtPantalla.setText(seleccionar);
-                }
-
-                else if (operacion == "|") {
-                    resultado = (int) numero1 | (int) numero2; // Realizar la operación OR (como enteros)
-                    seleccionar = String.format("%.0f", resultado);
-                    txtPantalla.setText(seleccionar);
-                }
-
-                else if (operacion == "~") { 
-                    resultado = ~((int) numero1); // Realizar la operación NOT (como un número entero)
-                    txtPantalla.setText(String.format("%.0f", resultado));
-                    operacionActual.append(" = " + txtPantalla.getText());
-                }
-
-                else {
-                    seleccionar = "Operación no válida";
-                    txtPantalla.setText(seleccionar);
-                    operacionActual.setLength(0);
-                    return;
-                }
-
+				/**
+				 * Crea una instancia de Bet y pasa la expresión
+				 */
+                Bet bet = new Bet(expresion);
                 
-                seleccionar = String.format("%.2f", resultado);
-                operacionActual.append(txtPantalla.getText());
-                txtPantalla.setText(operacionActual + " = " + seleccionar);
-                operacionActual.setLength(0);
-			}
-		});
-		btnIgual.setForeground(Color.RED);
-		btnIgual.setFont(new Font("Arial", Font.BOLD, 18));
-		btnIgual.setBounds(120, 258, 45, 36);
-		contentPane.add(btnIgual);
-		
-		
-	}
+				/**
+				 * Evalúa la expresión y obtiene el resultado
+				 */
+                double resultado = bet.evaluate_exp();
+                
+				/**
+				 * Muestra el resultado en la pantalla
+				 */
+                txtPantalla.setText(String.valueOf(resultado));
+            }
+        });
+        btnIgual.setForeground(Color.RED);
+        btnIgual.setFont(new Font("Arial", Font.BOLD, 18));
+        btnIgual.setBounds(120, 258, 45, 36);
+        contentPane.add(btnIgual);
+    }
 }
