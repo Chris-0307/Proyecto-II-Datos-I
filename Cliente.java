@@ -16,6 +16,7 @@ public class Cliente extends JFrame {
     private JPanel contentPane;
 	private JTextField txtPantalla;
     private StringBuilder operacionActual = new StringBuilder(); // Almacena la operación actual
+
 	
 	// VARIABLES
 	double numero1;
@@ -58,6 +59,8 @@ public class Cliente extends JFrame {
 		txtPantalla.setBounds(10, 11, 212, 42);
 		contentPane.add(txtPantalla);
 		txtPantalla.setColumns(10);
+		txtPantalla.setText(operacionActual.toString());
+
 		
         /**
          * Creat the buttons
@@ -66,14 +69,19 @@ public class Cliente extends JFrame {
 		JButton btnLimpiar = new JButton("C");
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtPantalla.setText("");
+				operacionActual.setLength(0); // Borra el contenido de la operación actual
+				txtPantalla.setText(""); // Borra el contenido de la pantalla
+				numero1 = 0; // Reinicia las variables de la operación
+				numero2 = 0;
+				operacion = "";
+				resultado = 0;
 			}
 		});
 		btnLimpiar.setForeground(new Color(255, 0, 0));
 		btnLimpiar.setFont(new Font("Arial", Font.BOLD, 17));
 		btnLimpiar.setBounds(173, 64, 55, 42);
 		contentPane.add(btnLimpiar);
-		
+
         JButton btnCamera = new JButton("P");
         btnCamera.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -89,9 +97,10 @@ public class Cliente extends JFrame {
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//NUMERO 3
-				String IngreseNumero = txtPantalla.getText() + btn3.getText();
-				txtPantalla.setText(IngreseNumero);
-			}
+				String numero = btn3.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
+    		}
 		});
 		btn3.setFont(new Font("Arial", Font.BOLD, 18));
 		btn3.setBounds(120, 117, 45, 36);
@@ -102,9 +111,10 @@ public class Cliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//NUMERO 2
 				
-				String IngreseNumero = txtPantalla.getText() + btn2.getText();
-				txtPantalla.setText(IngreseNumero);
-			}
+				String numero = btn2.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
+    		}
 		});
 		btn2.setFont(new Font("Arial", Font.BOLD, 18));
 		btn2.setBounds(65, 117, 45, 36);
@@ -114,10 +124,10 @@ public class Cliente extends JFrame {
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//NUMERO 1
-				String IngreseNumero = txtPantalla.getText() + btn1.getText();
-				txtPantalla.setText(IngreseNumero);
-				
-			}
+				String numero = btn1.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
+    		}
 		});
 		btn1.setFont(new Font("Arial", Font.BOLD, 18));
 		btn1.setBounds(10, 117, 45, 36);
@@ -127,9 +137,10 @@ public class Cliente extends JFrame {
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//NUMERO 6
-				String IngreseNumero = txtPantalla.getText() + btn6.getText();
-				txtPantalla.setText(IngreseNumero);
-			}
+				String numero = btn6.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
+    		}
 		});
 		btn6.setFont(new Font("Arial", Font.BOLD, 18));
 		btn6.setBounds(120, 164, 45, 36);
@@ -139,9 +150,10 @@ public class Cliente extends JFrame {
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//NUMERO 5
-				String IngreseNumero = txtPantalla.getText() + btn5.getText();
-				txtPantalla.setText(IngreseNumero);
-			}
+				String numero = btn5.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
+    		}
 		});
 		btn5.setFont(new Font("Arial", Font.BOLD, 18));
 		btn5.setBounds(65, 164, 45, 36);
@@ -151,9 +163,10 @@ public class Cliente extends JFrame {
 		btn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//NUMERO 4
-				String IngreseNumero = txtPantalla.getText() + btn4.getText();
-				txtPantalla.setText(IngreseNumero);
-			}
+				String numero = btn4.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
+    		}
 		});
 		btn4.setFont(new Font("Arial", Font.BOLD, 18));
 		btn4.setBounds(10, 164, 45, 36);
@@ -163,9 +176,10 @@ public class Cliente extends JFrame {
 		btn9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//NUMERO 9
-				String IngreseNumero = txtPantalla.getText() + btn9.getText();
-				txtPantalla.setText(IngreseNumero);
-			}
+				String numero = btn9.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
+    		}
 		});
 		btn9.setFont(new Font("Arial", Font.BOLD, 18));
 		btn9.setBounds(120, 211, 45, 36);
@@ -175,9 +189,10 @@ public class Cliente extends JFrame {
 		btn8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//NUMERO 8
-				String IngreseNumero = txtPantalla.getText() + btn8.getText();
-				txtPantalla.setText(IngreseNumero);
-			}
+				String numero = btn8.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
+    		}
 		});
 		btn8.setFont(new Font("Arial", Font.BOLD, 18));
 		btn8.setBounds(65, 211, 45, 36);
@@ -187,9 +202,10 @@ public class Cliente extends JFrame {
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//NUMERO 7
-				String IngreseNumero = txtPantalla.getText() + btn7.getText();
-				txtPantalla.setText(IngreseNumero);
-			}
+				String numero = btn7.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
+    		}
 		});
 		btn7.setFont(new Font("Arial", Font.BOLD, 18));
 		btn7.setBounds(10, 211, 45, 36);
@@ -199,9 +215,10 @@ public class Cliente extends JFrame {
 		btnCero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//CERO
-				String IngreseNumero = txtPantalla.getText() + btnCero.getText();
-				txtPantalla.setText(IngreseNumero);
-			}
+				String numero = btnCero.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
+    		}
 		});
 		btnCero.setFont(new Font("Arial", Font.BOLD, 18));
 		btnCero.setBounds(63, 258, 45, 36);
@@ -228,9 +245,8 @@ public class Cliente extends JFrame {
 				//SUMA
 				numero1 = Double.parseDouble(txtPantalla.getText());
 				operacionActual.append(txtPantalla.getText() + " + ");
-				txtPantalla.setText("");
+				txtPantalla.setText(operacionActual.toString());
 				operacion = "+";
-				
 			}
 		});
 		btnSuma.setForeground(Color.RED);
@@ -244,7 +260,7 @@ public class Cliente extends JFrame {
 				//RESTA
 				numero1 = Double.parseDouble(txtPantalla.getText());
 				operacionActual.append(txtPantalla.getText() + " - ");
-				txtPantalla.setText("");
+				txtPantalla.setText(operacionActual.toString());
 				operacion = "-";
 			}
 		});
@@ -259,7 +275,7 @@ public class Cliente extends JFrame {
 				//MULTIPLICACION
 				numero1 = Double.parseDouble(txtPantalla.getText());
 				operacionActual.append(txtPantalla.getText() + " * ");
-				txtPantalla.setText("");
+				txtPantalla.setText(operacionActual.toString());
 				operacion = "*";
 			}
 		});
@@ -274,7 +290,7 @@ public class Cliente extends JFrame {
 				//DIVICION
 				numero1 = Double.parseDouble(txtPantalla.getText());
 				operacionActual.append(txtPantalla.getText() + " / ");
-				txtPantalla.setText("");
+				txtPantalla.setText(operacionActual.toString());
 				operacion = "/";
 			}
 		});
@@ -289,7 +305,7 @@ public class Cliente extends JFrame {
 				// PORCENTAJE
 				numero1 = Double.parseDouble(txtPantalla.getText());
 				operacionActual.append(txtPantalla.getText() + " % ");
-				txtPantalla.setText("");
+				txtPantalla.setText(operacionActual.toString());
 				operacion = "%";
 			}
 		});
@@ -298,31 +314,27 @@ public class Cliente extends JFrame {
 		btnPorcentaje.setBounds(175, 305, 53, 36);
 		contentPane.add(btnPorcentaje);
 
-        JButton btnParentesisIzquierdo = new JButton("(");
-        btnParentesisIzquierdo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // PARENTESIS
-                numero1 = Double.parseDouble(txtPantalla.getText());
-				operacionActual.append(txtPantalla.getText() + " ) ");
-				txtPantalla.setText("");
-				operacion = ")";
-            }
-        });
+		JButton btnParentesisIzquierdo = new JButton("(");
+		btnParentesisIzquierdo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// PARENTESIS
+				operacionActual.append("(");
+				txtPantalla.setText(operacionActual.toString());
+			}
+		});
         btnParentesisIzquierdo.setForeground(Color.RED);
         btnParentesisIzquierdo.setFont(new Font("Arial", Font.BOLD, 18));
         btnParentesisIzquierdo.setBounds(8, 305, 45, 36);
         contentPane.add(btnParentesisIzquierdo);
 
         JButton btnParentesisDerecho = new JButton(")");
-        btnParentesisDerecho.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // PARENTESIS
-                numero1 = Double.parseDouble(txtPantalla.getText());
-				operacionActual.append(txtPantalla.getText() + " ) ");
-				txtPantalla.setText("");
-				operacion = ")";
-            }
-        });
+		btnParentesisDerecho.addActionListener(new ActionListener() {
+   			public void actionPerformed(ActionEvent e) {
+        		// PARENTESIS
+        		operacionActual.append(")");
+       			txtPantalla.setText(operacionActual.toString());
+    		}
+		});
         btnParentesisDerecho.setForeground(Color.RED);
         btnParentesisDerecho.setFont(new Font("Arial", Font.BOLD, 18));
         btnParentesisDerecho.setBounds(63, 305, 45, 36);
@@ -334,7 +346,7 @@ public class Cliente extends JFrame {
                 // EXPONENTE
                 numero1 = Double.parseDouble(txtPantalla.getText());
 				operacionActual.append(txtPantalla.getText() + " ^ ");
-				txtPantalla.setText("");
+				txtPantalla.setText(operacionActual.toString());
 				operacion = "^";
             }
         });
@@ -350,7 +362,7 @@ public class Cliente extends JFrame {
                 // XOR
                 numero1 = Double.parseDouble(txtPantalla.getText());
 				operacionActual.append(txtPantalla.getText() + " ^ ");
-				txtPantalla.setText("");
+				txtPantalla.setText(operacionActual.toString());
 				operacion = "^";
             }
         });
@@ -365,7 +377,7 @@ public class Cliente extends JFrame {
                 // AND
                 numero1 = Double.parseDouble(txtPantalla.getText());
                 operacionActual.append(txtPantalla.getText() + " & ");
-                txtPantalla.setText("");
+                txtPantalla.setText(operacionActual.toString());
                 operacion = "&";
             }
         });
@@ -380,7 +392,7 @@ public class Cliente extends JFrame {
                 // OR
                 numero1 = Double.parseDouble(txtPantalla.getText());
                 operacionActual.append(txtPantalla.getText() + " | ");
-                txtPantalla.setText("");
+                txtPantalla.setText(operacionActual.toString());
                 operacion = "|";
             }
         });
@@ -395,7 +407,7 @@ public class Cliente extends JFrame {
                 // NOT
                 numero1 = Double.parseDouble(txtPantalla.getText());
                 operacionActual.append(txtPantalla.getText() + " ~ ");
-                txtPantalla.setText("");
+                txtPantalla.setText(operacionActual.toString());
                 operacion = "~";
             }
         });
@@ -408,8 +420,9 @@ public class Cliente extends JFrame {
         JButton btnVerdadero = new JButton("V");
         btnVerdadero.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String IngreseNumero = txtPantalla.getText() + btnVerdadero.getText();
-                txtPantalla.setText(IngreseNumero);
+                String numero = btn2.getText();
+        	operacionActual.append(numero);
+        	txtPantalla.setText(operacionActual.toString());
             }
         });
         btnVerdadero.setFont(new Font("Arial", Font.BOLD, 18));
@@ -420,10 +433,11 @@ public class Cliente extends JFrame {
         JButton btnFalso = new JButton("F");
         btnFalso.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String IngreseNumero = txtPantalla.getText() + btnFalso.getText();
-                txtPantalla.setText(IngreseNumero);
-            }
-        });
+				String numero = btn2.getText();
+				operacionActual.append(numero);
+				txtPantalla.setText(operacionActual.toString());
+			}
+		});
         btnFalso.setFont(new Font("Arial", Font.BOLD, 18));
         btnFalso.setBounds(63, 64, 45, 36);
         contentPane.add(btnFalso);
@@ -436,22 +450,26 @@ public class Cliente extends JFrame {
 				/**
 				 * Obtiene la expresión matemática de txtPantalla
 				 */
-                String expresion = txtPantalla.getText();
+                String expresion = operacionActual.toString();
                 
 				/**
 				 * Crea una instancia de Bet y pasa la expresión
 				 */
                 Bet bet = new Bet(expresion);
-                
-				/**
-				 * Evalúa la expresión y obtiene el resultado
-				 */
-                double resultado = bet.evaluate_exp();
-                
+
 				/**
 				 * Muestra el resultado en la pantalla
 				 */
                 txtPantalla.setText(String.valueOf(resultado));
+
+				/**
+				 * Reinicia las variables de la operación 
+				 */ 
+				
+        		numero1 = 0;
+        		numero2 = 0;
+        		operacion = "";
+        		operacionActual.setLength(0);
             }
         });
         btnIgual.setForeground(Color.RED);
