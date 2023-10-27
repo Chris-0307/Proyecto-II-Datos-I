@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 import java.awt.Font;
-
+import java.io.*;
+import java.net.Socket;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -355,21 +356,11 @@ public class Cliente extends JFrame {
         contentPane.add(btnFalso);
 
 
-
 		JButton btnIgual = new JButton("=");
         btnIgual.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
-				/**
-				 * Crea una instancia de Bet y pasa la expresión
-				 */
 
-                Bet bet = new Bet(txtPantalla.getText());
-
-				/**
-				 * Muestra el resultado en la pantalla
-				 */
-                txtPantalla.setText(String.valueOf(bet.evaluate_exp()));
+				send_data(txtPantalla.getText());
 
             }
         });
@@ -378,4 +369,28 @@ public class Cliente extends JFrame {
         btnIgual.setBounds(120, 258, 45, 36);
         contentPane.add(btnIgual);
     }
+
+	private void send_data(String data){
+		try{
+
+			Socket socket = new Socket("127.0.0.1", 34723);
+
+			OutputStream os = socket.getOutputStream();
+			PrintWriter pw = new PrintWriter(os, true);
+			pw.println(data);
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			String last_result = br.readLine();
+			txtPantalla.setText(last_result);
+
+			pw.close();
+			os.close();
+			socket.close();
+
+			System.out.println("Se envio el mensaje");
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+
+	}
 }
