@@ -20,8 +20,7 @@ public class Cliente extends JFrame {
 	
 	// VARIABLES
 	double numero1;
-	double numero2;
-	double resultado;
+
 	String operacion;
 	
 	public static void main(String[] args) {
@@ -69,12 +68,7 @@ public class Cliente extends JFrame {
 		JButton btnLimpiar = new JButton("C");
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				operacionActual.setLength(0); // Borra el contenido de la operación actual
 				txtPantalla.setText(""); // Borra el contenido de la pantalla
-				numero1 = 0; // Reinicia las variables de la operación
-				numero2 = 0;
-				operacion = "";
-				resultado = 0;
 			}
 		});
 		btnLimpiar.setForeground(new Color(255, 0, 0));
@@ -96,10 +90,7 @@ public class Cliente extends JFrame {
 		JButton btn3 = new JButton("3");
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//NUMERO 3
-				String numero = btn3.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "3");
     		}
 		});
 		btn3.setFont(new Font("Arial", Font.BOLD, 18));
@@ -109,11 +100,7 @@ public class Cliente extends JFrame {
 		JButton btn2 = new JButton("2");
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//NUMERO 2
-				
-				String numero = btn2.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "2");
     		}
 		});
 		btn2.setFont(new Font("Arial", Font.BOLD, 18));
@@ -123,10 +110,7 @@ public class Cliente extends JFrame {
 		JButton btn1 = new JButton("1");
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//NUMERO 1
-				String numero = btn1.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "1");
     		}
 		});
 		btn1.setFont(new Font("Arial", Font.BOLD, 18));
@@ -136,10 +120,7 @@ public class Cliente extends JFrame {
 		JButton btn6 = new JButton("6");
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//NUMERO 6
-				String numero = btn6.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "6");
     		}
 		});
 		btn6.setFont(new Font("Arial", Font.BOLD, 18));
@@ -149,10 +130,7 @@ public class Cliente extends JFrame {
 		JButton btn5 = new JButton("5");
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//NUMERO 5
-				String numero = btn5.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "5");
     		}
 		});
 		btn5.setFont(new Font("Arial", Font.BOLD, 18));
@@ -162,10 +140,7 @@ public class Cliente extends JFrame {
 		JButton btn4 = new JButton("4");
 		btn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//NUMERO 4
-				String numero = btn4.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "4");
     		}
 		});
 		btn4.setFont(new Font("Arial", Font.BOLD, 18));
@@ -175,10 +150,7 @@ public class Cliente extends JFrame {
 		JButton btn9 = new JButton("9");
 		btn9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//NUMERO 9
-				String numero = btn9.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "9");
     		}
 		});
 		btn9.setFont(new Font("Arial", Font.BOLD, 18));
@@ -188,10 +160,7 @@ public class Cliente extends JFrame {
 		JButton btn8 = new JButton("8");
 		btn8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//NUMERO 8
-				String numero = btn8.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "8");
     		}
 		});
 		btn8.setFont(new Font("Arial", Font.BOLD, 18));
@@ -201,10 +170,7 @@ public class Cliente extends JFrame {
 		JButton btn7 = new JButton("7");
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//NUMERO 7
-				String numero = btn7.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "7");
     		}
 		});
 		btn7.setFont(new Font("Arial", Font.BOLD, 18));
@@ -214,10 +180,7 @@ public class Cliente extends JFrame {
 		JButton btnCero = new JButton("0");
 		btnCero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//CERO
-				String numero = btnCero.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "0");
     		}
 		});
 		btnCero.setFont(new Font("Arial", Font.BOLD, 18));
@@ -227,9 +190,7 @@ public class Cliente extends JFrame {
 		JButton btnPunto = new JButton(".");
 		btnPunto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//PUNTO
-				String IngreseNumero = txtPantalla.getText() + btnPunto.getText();
-				txtPantalla.setText(IngreseNumero);
+				txtPantalla.setText(txtPantalla.getText() + ".");
 			}
 		});
 		btnPunto.setForeground(new Color(255, 0, 0));
@@ -242,11 +203,7 @@ public class Cliente extends JFrame {
 		JButton btnSuma = new JButton("+");
 		btnSuma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//SUMA
-				numero1 = Double.parseDouble(txtPantalla.getText());
-				operacionActual.append(txtPantalla.getText() + " + ");
-				txtPantalla.setText(operacionActual.toString());
-				operacion = "+";
+				txtPantalla.setText(txtPantalla.getText() + "+");
 			}
 		});
 		btnSuma.setForeground(Color.RED);
@@ -257,11 +214,7 @@ public class Cliente extends JFrame {
 		JButton btnResta = new JButton("-");
 		btnResta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//RESTA
-				numero1 = Double.parseDouble(txtPantalla.getText());
-				operacionActual.append(txtPantalla.getText() + " - ");
-				txtPantalla.setText(operacionActual.toString());
-				operacion = "-";
+				txtPantalla.setText(txtPantalla.getText() + "-");
 			}
 		});
 		btnResta.setForeground(Color.RED);
@@ -269,14 +222,10 @@ public class Cliente extends JFrame {
 		btnResta.setBounds(175, 164, 45, 36);
 		contentPane.add(btnResta);
 		
-		JButton btnMulti = new JButton("x");
+		JButton btnMulti = new JButton("*");
 		btnMulti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//MULTIPLICACION
-				numero1 = Double.parseDouble(txtPantalla.getText());
-				operacionActual.append(txtPantalla.getText() + " * ");
-				txtPantalla.setText(operacionActual.toString());
-				operacion = "*";
+				txtPantalla.setText(txtPantalla.getText() + "*");
 			}
 		});
 		btnMulti.setForeground(Color.RED);
@@ -287,11 +236,7 @@ public class Cliente extends JFrame {
 		JButton btnDivi = new JButton("/");
 		btnDivi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//DIVICION
-				numero1 = Double.parseDouble(txtPantalla.getText());
-				operacionActual.append(txtPantalla.getText() + " / ");
-				txtPantalla.setText(operacionActual.toString());
-				operacion = "/";
+				txtPantalla.setText(txtPantalla.getText() + "/");
 			}
 		});
 		btnDivi.setForeground(Color.RED);
@@ -302,11 +247,7 @@ public class Cliente extends JFrame {
         JButton btnPorcentaje = new JButton("%");
 		btnPorcentaje.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// PORCENTAJE
-				numero1 = Double.parseDouble(txtPantalla.getText());
-				operacionActual.append(txtPantalla.getText() + " % ");
-				txtPantalla.setText(operacionActual.toString());
-				operacion = "%";
+				txtPantalla.setText(txtPantalla.getText() + "%");
 			}
 		});
 		btnPorcentaje.setForeground(Color.RED);
@@ -317,9 +258,7 @@ public class Cliente extends JFrame {
 		JButton btnParentesisIzquierdo = new JButton("(");
 		btnParentesisIzquierdo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// PARENTESIS
-				operacionActual.append("(");
-				txtPantalla.setText(operacionActual.toString());
+				txtPantalla.setText(txtPantalla.getText() + "(");
 			}
 		});
         btnParentesisIzquierdo.setForeground(Color.RED);
@@ -330,9 +269,7 @@ public class Cliente extends JFrame {
         JButton btnParentesisDerecho = new JButton(")");
 		btnParentesisDerecho.addActionListener(new ActionListener() {
    			public void actionPerformed(ActionEvent e) {
-        		// PARENTESIS
-        		operacionActual.append(")");
-       			txtPantalla.setText(operacionActual.toString());
+       			txtPantalla.setText(txtPantalla.getText() + ")");
     		}
 		});
         btnParentesisDerecho.setForeground(Color.RED);
@@ -343,11 +280,7 @@ public class Cliente extends JFrame {
         JButton btnExponencial = new JButton("^");
         btnExponencial.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // EXPONENTE
-                numero1 = Double.parseDouble(txtPantalla.getText());
-				operacionActual.append(txtPantalla.getText() + " ^ ");
-				txtPantalla.setText(operacionActual.toString());
-				operacion = "^";
+				txtPantalla.setText("");
             }
         });
         btnExponencial.setForeground(Color.RED);
@@ -359,11 +292,7 @@ public class Cliente extends JFrame {
         JButton btnXOR = new JButton("^");
         btnXOR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // XOR
-                numero1 = Double.parseDouble(txtPantalla.getText());
-				operacionActual.append(txtPantalla.getText() + " ^ ");
-				txtPantalla.setText(operacionActual.toString());
-				operacion = "^";
+				txtPantalla.setText(txtPantalla.getText() + "^");
             }
         });
         btnXOR.setForeground(Color.BLUE);
@@ -374,11 +303,7 @@ public class Cliente extends JFrame {
         JButton btnAnd = new JButton("&");
         btnAnd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // AND
-                numero1 = Double.parseDouble(txtPantalla.getText());
-                operacionActual.append(txtPantalla.getText() + " & ");
-                txtPantalla.setText(operacionActual.toString());
-                operacion = "&";
+                txtPantalla.setText(txtPantalla.getText() + "&");
             }
         });
         btnAnd.setForeground(Color.BLUE);
@@ -389,11 +314,7 @@ public class Cliente extends JFrame {
         JButton btnOr = new JButton("|");
         btnOr.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // OR
-                numero1 = Double.parseDouble(txtPantalla.getText());
-                operacionActual.append(txtPantalla.getText() + " | ");
-                txtPantalla.setText(operacionActual.toString());
-                operacion = "|";
+                txtPantalla.setText(txtPantalla.getText() + "|");
             }
         });
         btnOr.setForeground(Color.BLUE);
@@ -404,11 +325,7 @@ public class Cliente extends JFrame {
         JButton btnNot = new JButton("~");
         btnNot.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // NOT
-                numero1 = Double.parseDouble(txtPantalla.getText());
-                operacionActual.append(txtPantalla.getText() + " ~ ");
-                txtPantalla.setText(operacionActual.toString());
-                operacion = "~";
+                txtPantalla.setText(txtPantalla.getText() + "~");
             }
         });
         btnNot.setForeground(Color.BLUE);
@@ -420,22 +337,17 @@ public class Cliente extends JFrame {
         JButton btnVerdadero = new JButton("V");
         btnVerdadero.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String numero = btn2.getText();
-        	operacionActual.append(numero);
-        	txtPantalla.setText(operacionActual.toString());
+        	txtPantalla.setText(txtPantalla.getText() + "V");
             }
         });
         btnVerdadero.setFont(new Font("Arial", Font.BOLD, 18));
         btnVerdadero.setBounds(10, 64, 47, 36);
         contentPane.add(btnVerdadero);
 
-        // Botón Falso (0)
         JButton btnFalso = new JButton("F");
         btnFalso.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-				String numero = btn2.getText();
-				operacionActual.append(numero);
-				txtPantalla.setText(operacionActual.toString());
+				txtPantalla.setText(txtPantalla.getText() + "F");
 			}
 		});
         btnFalso.setFont(new Font("Arial", Font.BOLD, 18));
@@ -447,29 +359,18 @@ public class Cliente extends JFrame {
 		JButton btnIgual = new JButton("=");
         btnIgual.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-				/**
-				 * Obtiene la expresión matemática de txtPantalla
-				 */
-                String expresion = operacionActual.toString();
                 
 				/**
 				 * Crea una instancia de Bet y pasa la expresión
 				 */
-                Bet bet = new Bet(expresion);
+
+                Bet bet = new Bet(txtPantalla.getText());
 
 				/**
 				 * Muestra el resultado en la pantalla
 				 */
-                txtPantalla.setText(String.valueOf(resultado));
+                txtPantalla.setText(String.valueOf(bet.evaluate_exp()));
 
-				/**
-				 * Reinicia las variables de la operación 
-				 */ 
-				
-        		numero1 = 0;
-        		numero2 = 0;
-        		operacion = "";
-        		operacionActual.setLength(0);
             }
         });
         btnIgual.setForeground(Color.RED);

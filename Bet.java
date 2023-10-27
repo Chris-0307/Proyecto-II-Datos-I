@@ -76,7 +76,7 @@ public class Bet {
 
         p = switch(c){
             case '^' -> 30;
-            case '*', '/' -> 20;
+            case '*', '/', '%' -> 20;
             case '+', '-' -> 10;
             default -> 0;
         };
@@ -86,7 +86,7 @@ public class Bet {
     private boolean operator_check(char c){
         boolean result;
         result = switch(c) {
-            case '(', ')', '^', '*', '/', '+', '-' -> true;
+            case '(', ')', '^', '*', '/', '%', '+', '-' -> true;
             default -> false;
         };
         return result;
@@ -109,16 +109,28 @@ public class Bet {
 
         for (int i=0; i<chain.length(); i++){
             evaluated_c = chain.charAt(i);
-            token = new Tree_node (evaluated_c);
 
-            if(!operator_check(evaluated_c)){
+            if (Character.isDigit(evaluated_c)) {
+                StringBuilder num_builder = new StringBuilder();
+
+                while (i < chain.length() && Character.isDigit(chain.charAt(i))){
+                    num_builder.append(chain.charAt(i));
+                    i++;
+                }
+
+                i--;
+                token = new Tree_node(Double.parseDouble(num_builder.toString()));
+                expressions_pile.insert(token);
+            } else if (!operator_check(evaluated_c)) {
+                token = new Tree_node(evaluated_c);
                 expressions_pile.insert(token);
             }
-            else
-                switch(evaluated_c){
+            else {
+                token = new Tree_node(evaluated_c);
+                switch (evaluated_c) {
                     case '(' -> operators_pile.insert(token);
-                    case ')' ->{
-                        while(!operators_pile.void_pile() && !operators_pile.max_pile().data.equals('(')){
+                    case ')' -> {
+                        while (!operators_pile.void_pile() && !operators_pile.max_pile().data.equals('(')) {
                             op2 = expressions_pile.eliminate();
                             op1 = expressions_pile.eliminate();
                             op = operators_pile.eliminate();
@@ -127,8 +139,8 @@ public class Bet {
                         }
                         operators_pile.eliminate();
                     }
-                    default ->{
-                        while(!operators_pile.void_pile() && priority(evaluated_c) <= priority(operators_pile.max_pile().data.toString().charAt(0))){
+                    default -> {
+                        while (!operators_pile.void_pile() && priority(evaluated_c) <= priority(operators_pile.max_pile().data.toString().charAt(0))) {
                             op2 = expressions_pile.eliminate();
                             op1 = expressions_pile.eliminate();
                             op = operators_pile.eliminate();
@@ -138,7 +150,7 @@ public class Bet {
                         operators_pile.insert(token);
                     }
                 }
-            
+            }
         }
         while(!operators_pile.void_pile()){
             op2 = expressions_pile.eliminate();
@@ -157,19 +169,27 @@ public class Bet {
     }
 
     private double evaluate(Tree_node sub_tree){
-        double acum=0;
-        if(!operator_check(sub_tree.data.toString().charAt(0))){
-            return Double.parseDouble(sub_tree.data.toString());
-        }
-        else{
-            switch(sub_tree.data.toString().charAt(0)){
-                case '^' -> acum = acum + Math.pow(evaluate(sub_tree.left), evaluate(sub_tree.right));
-                case '*' -> acum = acum + evaluate(sub_tree.left) * evaluate(sub_tree.right);
-                case '/' -> acum = acum + evaluate(sub_tree.left) / evaluate(sub_tree.right);
-                case '+' -> acum = acum + evaluate(sub_tree.left) + evaluate(sub_tree.right);
-                case '-' -> acum = acum + evaluate(sub_tree.left) - evaluate(sub_tree.right);
+        double result = 0;
+        if (sub_tree != null) {
+            if (!operator_check(sub_tree.data.toString().charAt(0))) {
+                result = Double.parseDouble(sub_tree.data.toString());
+            } else {
+                char operator = sub_tree.data.toString().charAt(0);
+                double leftValue = evaluate(sub_tree.left);
+                double rightValue = evaluate(sub_tree.right);
+
+                switch (operator) {
+                    case '^' -> result = Math.pow(leftValue, rightValue);
+                    case '*' -> result = leftValue * rightValue;
+                    case '/' -> result = leftValue / rightValue;
+                    case '%' -> result = leftValue % rightValue;
+                    case '+' -> result = leftValue + rightValue;
+                    case '-' -> result = leftValue - rightValue;
+                }
+
             }
-        return acum;
         }
+        return result;
     }
+
 }
