@@ -66,16 +66,20 @@ public class Bet {
         for (int i=0; i<chain.length(); i++){
             evaluated_c = chain.charAt(i);
 
-            if (Character.isDigit(evaluated_c)) {
+            if (Character.isDigit(evaluated_c) || evaluated_c == '.') {
                 StringBuilder num_builder = new StringBuilder();
 
-                while (i < chain.length() && Character.isDigit(chain.charAt(i))){
+                while (i < chain.length() && (Character.isDigit(chain.charAt(i)) || chain.charAt(i) == '.')){
                     num_builder.append(chain.charAt(i));
                     i++;
                 }
 
                 i--;
-                token = new Tree_node(Double.parseDouble(num_builder.toString()));
+                if (num_builder.toString().contains(".")) {
+                    token = new Tree_node(Double.parseDouble(num_builder.toString()));
+                } else {
+                    token = new Tree_node(Integer.parseInt(num_builder.toString()));
+                }
                 expressions_pile.insert(token);
             } else if (!operator_check(evaluated_c)) {
                 token = new Tree_node(evaluated_c);
