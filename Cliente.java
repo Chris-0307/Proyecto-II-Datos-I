@@ -18,12 +18,8 @@ public class Cliente extends JFrame {
 	private JTextField txtPantalla;
     private StringBuilder operacionActual = new StringBuilder(); // Almacena la operación actual
 
-	
-	// VARIABLES
-	double numero1;
+	public boolean ari_log = true;
 
-	String operacion;
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -178,50 +174,50 @@ public class Cliente extends JFrame {
 		btn7.setBounds(10, 211, 45, 36);
 		contentPane.add(btn7);
 		
-		JButton btnCero = new JButton("0");
-		btnCero.addActionListener(new ActionListener() {
+		JButton btn0 = new JButton("0");
+		btn0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
         	txtPantalla.setText(txtPantalla.getText() + "0");
     		}
 		});
-		btnCero.setFont(new Font("Arial", Font.BOLD, 18));
-		btnCero.setBounds(63, 258, 45, 36);
-		contentPane.add(btnCero);
+		btn0.setFont(new Font("Arial", Font.BOLD, 18));
+		btn0.setBounds(63, 258, 45, 36);
+		contentPane.add(btn0);
 		
-		JButton btnPunto = new JButton(".");
-		btnPunto.addActionListener(new ActionListener() {
+		JButton btnDot = new JButton(".");
+		btnDot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtPantalla.setText(txtPantalla.getText() + ".");
 			}
 		});
-		btnPunto.setForeground(new Color(255, 0, 0));
-		btnPunto.setFont(new Font("Arial", Font.BOLD, 23));
-		btnPunto.setBounds(8, 258, 45, 36);
-		contentPane.add(btnPunto);
+		btnDot.setForeground(new Color(255, 0, 0));
+		btnDot.setFont(new Font("Arial", Font.BOLD, 23));
+		btnDot.setBounds(8, 258, 45, 36);
+		contentPane.add(btnDot);
 		
 		
 		
-		JButton btnSuma = new JButton("+");
-		btnSuma.addActionListener(new ActionListener() {
+		JButton btnSum = new JButton("+");
+		btnSum.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtPantalla.setText(txtPantalla.getText() + "+");
 			}
 		});
-		btnSuma.setForeground(Color.RED);
-		btnSuma.setFont(new Font("Arial", Font.BOLD, 18));
-		btnSuma.setBounds(173, 117, 45, 36);
-		contentPane.add(btnSuma);
+		btnSum.setForeground(Color.RED);
+		btnSum.setFont(new Font("Arial", Font.BOLD, 18));
+		btnSum.setBounds(173, 117, 45, 36);
+		contentPane.add(btnSum);
 		
-		JButton btnResta = new JButton("-");
-		btnResta.addActionListener(new ActionListener() {
+		JButton btnSubs = new JButton("-");
+		btnSubs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtPantalla.setText(txtPantalla.getText() + "-");
 			}
 		});
-		btnResta.setForeground(Color.RED);
-		btnResta.setFont(new Font("Arial", Font.BOLD, 18));
-		btnResta.setBounds(175, 164, 45, 36);
-		contentPane.add(btnResta);
+		btnSubs.setForeground(Color.RED);
+		btnSubs.setFont(new Font("Arial", Font.BOLD, 18));
+		btnSubs.setBounds(175, 164, 45, 36);
+		contentPane.add(btnSubs);
 		
 		JButton btnMulti = new JButton("*");
 		btnMulti.addActionListener(new ActionListener() {
@@ -245,49 +241,38 @@ public class Cliente extends JFrame {
 		btnDivi.setBounds(173, 258, 45, 36);
 		contentPane.add(btnDivi);
 
-        JButton btnPorcentaje = new JButton("%");
-		btnPorcentaje.addActionListener(new ActionListener() {
+        JButton btnPorcentage = new JButton("%");
+		btnPorcentage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtPantalla.setText(txtPantalla.getText() + "%");
 			}
 		});
-		btnPorcentaje.setForeground(Color.RED);
-		btnPorcentaje.setFont(new Font("Arial", Font.BOLD, 18));
-		btnPorcentaje.setBounds(175, 305, 53, 36);
-		contentPane.add(btnPorcentaje);
+		btnPorcentage.setForeground(Color.RED);
+		btnPorcentage.setFont(new Font("Arial", Font.BOLD, 18));
+		btnPorcentage.setBounds(175, 305, 53, 36);
+		contentPane.add(btnPorcentage);
 
-		JButton btnParentesisIzquierdo = new JButton("(");
-		btnParentesisIzquierdo.addActionListener(new ActionListener() {
+		JButton btnLeftP = new JButton("(");
+		btnLeftP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtPantalla.setText(txtPantalla.getText() + "(");
 			}
 		});
-        btnParentesisIzquierdo.setForeground(Color.RED);
-        btnParentesisIzquierdo.setFont(new Font("Arial", Font.BOLD, 18));
-        btnParentesisIzquierdo.setBounds(8, 305, 45, 36);
-        contentPane.add(btnParentesisIzquierdo);
+		btnLeftP.setForeground(Color.RED);
+		btnLeftP.setFont(new Font("Arial", Font.BOLD, 18));
+		btnLeftP.setBounds(8, 305, 45, 36);
+        contentPane.add(btnLeftP);
 
-        JButton btnParentesisDerecho = new JButton(")");
-		btnParentesisDerecho.addActionListener(new ActionListener() {
+        JButton btnRightP = new JButton(")");
+		btnRightP.addActionListener(new ActionListener() {
    			public void actionPerformed(ActionEvent e) {
        			txtPantalla.setText(txtPantalla.getText() + ")");
     		}
 		});
-        btnParentesisDerecho.setForeground(Color.RED);
-        btnParentesisDerecho.setFont(new Font("Arial", Font.BOLD, 18));
-        btnParentesisDerecho.setBounds(63, 305, 45, 36);
-        contentPane.add(btnParentesisDerecho);
-
-        JButton btnExponencial = new JButton("^");
-        btnExponencial.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-				txtPantalla.setText("");
-            }
-        });
-        btnExponencial.setForeground(Color.RED);
-        btnExponencial.setFont(new Font("Arial", Font.BOLD, 18));
-        btnExponencial.setBounds(120, 305, 45, 36);
-        contentPane.add(btnExponencial);
+		btnRightP.setForeground(Color.RED);
+		btnRightP.setFont(new Font("Arial", Font.BOLD, 18));
+		btnRightP.setBounds(63, 305, 45, 36);
+        contentPane.add(btnRightP);
 
 
         JButton btnXOR = new JButton("^");
@@ -300,6 +285,7 @@ public class Cliente extends JFrame {
         btnXOR.setFont(new Font("Arial", Font.BOLD, 18));
         btnXOR.setBounds(175, 350, 45, 36);
         contentPane.add(btnXOR);
+		btnXOR.setVisible(false);
 
         JButton btnAnd = new JButton("&");
         btnAnd.addActionListener(new ActionListener() {
@@ -311,6 +297,7 @@ public class Cliente extends JFrame {
         btnAnd.setFont(new Font("Arial", Font.BOLD, 18));
         btnAnd.setBounds(8, 350, 47, 36);
         contentPane.add(btnAnd);
+		btnAnd.setVisible(false);
 
         JButton btnOr = new JButton("|");
         btnOr.addActionListener(new ActionListener() {
@@ -322,6 +309,7 @@ public class Cliente extends JFrame {
         btnOr.setFont(new Font("Arial", Font.BOLD, 18));
         btnOr.setBounds(63, 350, 45, 36);
         contentPane.add(btnOr);
+		btnOr.setVisible(false);
 
         JButton btnNot = new JButton("~");
         btnNot.addActionListener(new ActionListener() {
@@ -333,28 +321,97 @@ public class Cliente extends JFrame {
         btnNot.setFont(new Font("Arial", Font.BOLD, 18));
         btnNot.setBounds(120, 350, 45, 36);
         contentPane.add(btnNot);
+		btnNot.setVisible(false);
 
-
-        JButton btnVerdadero = new JButton("V");
-        btnVerdadero.addActionListener(new ActionListener() {
+        JButton btnV = new JButton("V");
+        btnV.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
         	txtPantalla.setText(txtPantalla.getText() + "V");
             }
         });
-        btnVerdadero.setFont(new Font("Arial", Font.BOLD, 18));
-        btnVerdadero.setBounds(10, 64, 47, 36);
-        contentPane.add(btnVerdadero);
+        btnV.setFont(new Font("Arial", Font.BOLD, 18));
+        btnV.setBounds(10, 64, 47, 36);
+        contentPane.add(btnV);
+		btnV.setVisible(false);
 
-        JButton btnFalso = new JButton("F");
-        btnFalso.addActionListener(new ActionListener() {
+        JButton btnF = new JButton("F");
+        btnF.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 				txtPantalla.setText(txtPantalla.getText() + "F");
 			}
 		});
-        btnFalso.setFont(new Font("Arial", Font.BOLD, 18));
-        btnFalso.setBounds(63, 64, 45, 36);
-        contentPane.add(btnFalso);
+        btnF.setFont(new Font("Arial", Font.BOLD, 18));
+        btnF.setBounds(63, 64, 45, 36);
+        contentPane.add(btnF);
+		btnF.setVisible(false);
 
+		JButton btnAL = new JButton("AL");
+		btnAL.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				ari_log = !ari_log;
+				txtPantalla.setText("");
+
+				if (ari_log == false){
+					btnXOR.setVisible(true);
+					btnAnd.setVisible(true);
+					btnOr.setVisible(true);
+					btnNot.setVisible(true);
+					btnV.setVisible(true);
+					btnF.setVisible(true);
+
+					btn1.setVisible(false);
+					btn2.setVisible(false);
+					btn3.setVisible(false);
+					btn4.setVisible(false);
+					btn5.setVisible(false);
+					btn6.setVisible(false);
+					btn7.setVisible(false);
+					btn8.setVisible(false);
+					btn9.setVisible(false);
+					btn0.setVisible(false);
+					btnDot.setVisible(false);
+
+					btnSum.setVisible(false);
+					btnSubs.setVisible(false);
+					btnDivi.setVisible(false);
+					btnMulti.setVisible(false);
+					btnPorcentage.setVisible(false);
+
+				} else{
+					btnXOR.setVisible(false);
+					btnAnd.setVisible(false);
+					btnOr.setVisible(false);
+					btnNot.setVisible(false);
+					btnV.setVisible(false);
+					btnF.setVisible(false);
+
+					btn1.setVisible(true);
+					btn2.setVisible(true);
+					btn3.setVisible(true);
+					btn4.setVisible(true);
+					btn5.setVisible(true);
+					btn6.setVisible(true);
+					btn7.setVisible(true);
+					btn8.setVisible(true);
+					btn9.setVisible(true);
+					btn0.setVisible(true);
+					btnDot.setVisible(true);
+
+					btnSum.setVisible(true);
+					btnSubs.setVisible(true);
+					btnDivi.setVisible(true);
+					btnMulti.setVisible(true);
+					btnPorcentage.setVisible(true);
+
+				}
+
+			}
+		});
+		btnAL.setForeground(Color.RED);
+		btnAL.setFont(new Font("Arial", Font.BOLD, 18));
+		btnAL.setBounds(120, 305, 45, 36);
+		contentPane.add(btnAL);
 
 		JButton btnIgual = new JButton("=");
         btnIgual.addActionListener(new ActionListener() {
@@ -377,7 +434,7 @@ public class Cliente extends JFrame {
 
 			OutputStream os = socket.getOutputStream();
 			PrintWriter pw = new PrintWriter(os, true);
-			pw.println(data);
+			pw.println(ari_log + ":" + data);
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			String last_result = br.readLine();
@@ -387,7 +444,6 @@ public class Cliente extends JFrame {
 			os.close();
 			socket.close();
 
-			System.out.println("Se envio el mensaje");
 		} catch (IOException e){
 			e.printStackTrace();
 		}

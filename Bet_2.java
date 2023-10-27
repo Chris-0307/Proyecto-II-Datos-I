@@ -1,14 +1,14 @@
-public class Bet {
+public class Bet_2 {
     Tree_node root;
 
-    public Bet(){
+    public Bet_2(){
         root = null;
     }
 
-    public Bet(String chain){
-        root = create_bet_tree(chain);
+    public Bet_2(String chain){
+        root = create_bet_tree_2(chain);
     }
-        
+
     public void restart_tree(){
         root = null;
     }
@@ -31,9 +31,10 @@ public class Bet {
         int p=100;
 
         p = switch(c){
-            case '^' -> 30;
-            case '*', '/', '%' -> 20;
-            case '+', '-' -> 10;
+            case '~' -> 40;
+            case '&' -> 30;
+            case '^' -> 20;
+            case '|' -> 10;
             default -> 0;
         };
         return p;
@@ -42,15 +43,14 @@ public class Bet {
     private boolean operator_check(char c){
         boolean result;
         result = switch(c) {
-            case '(', ')', '^', '*', '/', '%', '+', '-' -> true;
+            case '(', ')', '^', '~', '&', '|' -> true;
             default -> false;
         };
         return result;
 
     }
 
-    private Tree_node create_bet_tree(String chain){
-        chain = chain.replace("**", "^");
+    private Tree_node create_bet_tree_2(String chain){
         Pile_bet operators_pile;
         Pile_bet expressions_pile;
         Tree_node token;
@@ -66,16 +66,9 @@ public class Bet {
         for (int i=0; i<chain.length(); i++){
             evaluated_c = chain.charAt(i);
 
-            if (Character.isDigit(evaluated_c)) {
-                StringBuilder num_builder = new StringBuilder();
+            if (evaluated_c == 'V' || evaluated_c == 'F') {
 
-                while (i < chain.length() && Character.isDigit(chain.charAt(i))){
-                    num_builder.append(chain.charAt(i));
-                    i++;
-                }
-
-                i--;
-                token = new Tree_node(Double.parseDouble(num_builder.toString()));
+                token = new Tree_node(evaluated_c);
                 expressions_pile.insert(token);
             } else if (!operator_check(evaluated_c)) {
                 token = new Tree_node(evaluated_c);
@@ -119,33 +112,31 @@ public class Bet {
         op = expressions_pile.eliminate();
         return op;
     }
-    
-    public double evaluate_exp(){
+
+    public boolean evaluate_exp(){
         return evaluate(root);
     }
 
-    private double evaluate(Tree_node sub_tree){
-        double result = 0;
+    private boolean evaluate(Tree_node sub_tree){
+        boolean result = false;
         if (sub_tree != null) {
             if (!operator_check(sub_tree.data.toString().charAt(0))) {
-                result = Double.parseDouble(sub_tree.data.toString());
+                result = sub_tree.data.toString().equals("V");
             } else {
                 char operator = sub_tree.data.toString().charAt(0);
-                double leftValue = evaluate(sub_tree.left);
-                double rightValue = evaluate(sub_tree.right);
+                boolean leftValue = evaluate(sub_tree.left);
+                boolean rightValue = evaluate(sub_tree.right);
 
                 switch (operator) {
-                    case '^' -> result = Math.pow(leftValue, rightValue);
-                    case '*' -> result = leftValue * rightValue;
-                    case '/' -> result = leftValue / rightValue;
-                    case '%' -> result = leftValue % rightValue;
-                    case '+' -> result = leftValue + rightValue;
-                    case '-' -> result = leftValue - rightValue;
+                    case '&' -> result = leftValue && rightValue;
+                    case '|' -> result = leftValue || rightValue;
+                    case '^' -> result = leftValue ^ rightValue;
+                    case '~' -> result = !rightValue;
+
                 }
 
             }
         }
         return result;
     }
-
 }
