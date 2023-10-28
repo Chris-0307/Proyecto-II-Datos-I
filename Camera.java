@@ -25,6 +25,8 @@ public class Camera extends JFrame{
     private boolean clicked = false;
     private File image_file;
     Tesseract ts;
+    private String text = "";
+    private String textCallback = null;
 
     public Camera(){
         setLayout(null);
@@ -79,29 +81,43 @@ public class Camera extends JFrame{
             if(clicked){
                 clicked = false;
 
-            image_file = new File("temp_image.jpg");
-            Imgcodecs.imwrite(image_file.getAbsolutePath(),image);
+                image_file = new File("temp_image.jpg");
+                Imgcodecs.imwrite(image_file.getAbsolutePath(),image);
 
-            ts = new Tesseract();
-            ts.setDatapath("C:\\Users\\chris\\Desktop\\Tess4J\\tessdata");
-            ts.setLanguage("equ");
-            try{
-                String text = ts.doOCR(image_file);
-                System.out.println(text);
-            } catch (TesseractException e){
-                e.printStackTrace();
-                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        processOCR();
+                    }
+                }).start();
+
             }
 
         }
 
+    }
+
+    public void processOCR(){
+        ts = new Tesseract();
+        ts.setDatapath("C:\\Users\\chris\\Desktop\\Tess4J\\tessdata");
+        try{
+            text = ts.doOCR(image_file);
+            System.out.println(text);
 
 
+            textCallback = text;
+        } catch (TesseractException e){
+            e.printStackTrace();
+        }
+    }
+
+    public String getText(){
+        return textCallback;
     }
     public static void main(String[] args){
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         EventQueue.invokeLater(new Runnable() {
-            
+
             @Override
             public void run(){
                 Camera camera = new Camera();
@@ -115,5 +131,5 @@ public class Camera extends JFrame{
             }
         });
     }
-    
+
 }

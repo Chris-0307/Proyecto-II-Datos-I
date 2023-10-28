@@ -8,7 +8,7 @@ public class Bet {
     public Bet(String chain){
         root = create_bet_tree(chain);
     }
-        
+
     public void restart_tree(){
         root = null;
     }
@@ -123,7 +123,7 @@ public class Bet {
         op = expressions_pile.eliminate();
         return op;
     }
-    
+
     public double evaluate_exp(){
         return evaluate(root);
     }
