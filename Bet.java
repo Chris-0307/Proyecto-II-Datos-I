@@ -1,10 +1,17 @@
+/**
+ * The Bet class represents a mathematical expression as a binary expression tree and provides methods
+ * for evaluation and manipulation.
+ */
 public class Bet {
     Tree_node root;
-
     public Bet(){
         root = null;
     }
-
+    /**
+     * Constructs a new Bet by creating a binary expression tree from the provided expression.
+     *
+     * @param chain The mathematical expression in string format.
+     */
     public Bet(String chain){
         root = create_bet_tree(chain);
     }
@@ -12,21 +19,42 @@ public class Bet {
     public void restart_tree(){
         root = null;
     }
-
+    /**
+     * Creates a new root node with the specified data.
+     *
+     * @param data The data for the new root node.
+     */
     public void create_node(Object data){
         root = new Tree_node(data);
     }
 
+    /**
+     * Creates a subtree with the specified nodes and operator.
+     *
+     * @param data_2 The left child node.
+     * @param data_1 The right child node.
+     * @param operator The operator node.
+     * @return The root node of the subtree.
+     */
     public Tree_node create_subtree(Tree_node data_2, Tree_node data_1, Tree_node operator){
         operator.left = data_1;
         operator.right = data_2;
         return operator;
     }
-
+    /**
+     * Checks if the tree is empty (root is null).
+     *
+     * @return True if the tree is empty, false otherwise.
+     */
     public boolean void_tree(){
         return root == null;
     }
-
+    /**
+     * Returns the priority of an operator for the expression parsing.
+     *
+     * @param c The operator character.
+     * @return The priority value.
+     */
     private int priority(char c){
         int p=100;
 
@@ -38,7 +66,12 @@ public class Bet {
         };
         return p;
     }
-
+    /**
+     * Checks if a character is a valid operator.
+     *
+     * @param c The character to be checked.
+     * @return True if the character is a valid operator, false otherwise.
+     */
     private boolean operator_check(char c){
         boolean result;
         result = switch(c) {
@@ -48,7 +81,13 @@ public class Bet {
         return result;
 
     }
-
+    /**
+    * Creates a binary expression tree from a given mathematical expression string.
+    * Supports operators: +, -, *, /, %, ^, parentheses, and numbers.
+     *
+     * @param chain The mathematical expression in string format.
+    * @return The root node of the binary expression tree.
+     */
     private Tree_node create_bet_tree(String chain){
         chain = chain.replace("**", "^");
         Pile_bet operators_pile;
@@ -123,11 +162,20 @@ public class Bet {
         op = expressions_pile.eliminate();
         return op;
     }
-
+    /**
+     * Evaluates the mathematical expression represented by the binary expression tree.
+     *
+     * @return The result of the evaluation.
+     */
     public double evaluate_exp(){
         return evaluate(root);
     }
-
+    /**
+     * Recursively evaluates a subtree of the binary expression tree.
+     *
+     * @param sub_tree The root node of the subtree to be evaluated.
+     * @return The result of the evaluation.
+     */
     private double evaluate(Tree_node sub_tree){
         double result = 0;
         if (sub_tree != null) {

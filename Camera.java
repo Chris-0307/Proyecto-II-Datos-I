@@ -14,7 +14,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
+/**
+ * Represents a JFrame application for capturing images from a camera and performing OCR on them.
+ */
 public class Camera extends JFrame{
 
     private JLabel camera_screen;
@@ -27,7 +29,10 @@ public class Camera extends JFrame{
     Tesseract ts;
     private String text = "";
     private String textCallback = null;
-
+    /**
+     * Constructor for the Camera class.
+     * Initializes the GUI components and sets up event listeners.
+     */
     public Camera(){
         setLayout(null);
         camera_screen = new JLabel();
@@ -60,7 +65,11 @@ public class Camera extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
-
+    /**
+     * Retrieves the captured image.
+     *
+     * @return The Mat object representing the captured image.
+     */
     public Mat get_captured_image(){
         return captured_image;
     }
@@ -111,10 +120,20 @@ public class Camera extends JFrame{
             e.printStackTrace();
         }
     }
-
+    /**
+     * Retrieves the recognized text from the OCR process.
+     *
+     * @return The recognized text as a string.
+     */
     public String getText(){
         return textCallback;
     }
+    /**
+     * Main method for running the Camera application.
+     * Loads OpenCV libraries, creates an instance of the Camera class, and starts the camera capture thread.
+     *
+     * @param args Command-line arguments (not used in this application).
+     */
     public static void main(String[] args){
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         EventQueue.invokeLater(new Runnable() {

@@ -1,8 +1,17 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-
+/**
+ * The Server class implements a simple server that listens on a specific port (34723)
+ * and processes client requests.
+ */
 public class Server{
+    /**
+     * The main method of the Server class.
+     *
+     * @param args The command-line arguments (unused).
+     */
+
     public static void main(String[] args){
 
         try{

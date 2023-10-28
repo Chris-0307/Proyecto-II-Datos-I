@@ -10,6 +10,10 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The Cliente class extends JFrame and implements a simple calculator interface.
+ * It allows users to perform basic arithmetic and logical operations.
+ */
 public class Cliente extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtScreen;
@@ -21,7 +25,8 @@ public class Cliente extends JFrame {
 
 
 	/**
-	 * Create the frame.
+	 * Creates the calculator frame.
+	 * Initializes the GUI components and sets up their properties.
 	 */
 	public Cliente() {
 
@@ -45,13 +50,17 @@ public class Cliente extends JFrame {
 
 
 		/**
-		 * Creat the buttons
+		 * Creates and configures buttons for calculator operations.
 		 */
-
 		JButton btnClean = new JButton("C");
 		btnClean.addActionListener(new ActionListener() {
+			/**
+			 * Clears the text in the screen when the corresponding button is clicked.
+			 * This method sets the text field to an empty string.
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
-				txtScreen.setText(""); // Borra el contenido de la pantalla
+				txtScreen.setText("");
 			}
 		});
 		btnClean.setForeground(new Color(255, 0, 0));
@@ -61,6 +70,14 @@ public class Cliente extends JFrame {
 
 		JButton btnCamera = new JButton("P");
 		btnCamera.addActionListener(new ActionListener() {
+			/**
+			 * Initiates the camera and displays text on the screen.
+			 * If the camera is not initialized, it creates a new instance of Camera class
+			 * and starts a new thread to run it.
+			 * Then, it starts another thread to continuously update the screen with text from the camera.
+			 * If text is received, it is displayed on the screen.
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 
 			if (camera == null){
@@ -105,6 +122,12 @@ public class Cliente extends JFrame {
 
 		JButton btn3 = new JButton("3");
 		btn3.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for button "3". Appends "3" to the text on the screen when the
+			 * button "3" is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "3");
 			}
@@ -115,6 +138,12 @@ public class Cliente extends JFrame {
 
 		JButton btn2 = new JButton("2");
 		btn2.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for button "2". Appends "2" to the text on the screen when the
+			 * button "2" is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "2");
 			}
@@ -125,6 +154,12 @@ public class Cliente extends JFrame {
 
 		JButton btn1 = new JButton("1");
 		btn1.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for button "1". Appends "1" to the text on the screen when the
+			 * button "1" is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "1");
 			}
@@ -135,6 +170,12 @@ public class Cliente extends JFrame {
 
 		JButton btn6 = new JButton("6");
 		btn6.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for button "6". Appends "6" to the text on the screen when the
+			 * button "6" is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "6");
 			}
@@ -144,7 +185,14 @@ public class Cliente extends JFrame {
 		contentPane.add(btn6);
 
 		JButton btn5 = new JButton("5");
+
 		btn5.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for button "5". Appends "5" to the text on the screen when the
+			 * button "5" is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "5");
 			}
@@ -155,6 +203,12 @@ public class Cliente extends JFrame {
 
 		JButton btn4 = new JButton("4");
 		btn4.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for button "4". Appends "4" to the text on the screen when the
+			 * button "4" is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "4");
 			}
@@ -165,6 +219,12 @@ public class Cliente extends JFrame {
 
 		JButton btn9 = new JButton("9");
 		btn9.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for button "9". Appends "9" to the text on the screen when the
+			 * button "9" is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "9");
 			}
@@ -175,6 +235,12 @@ public class Cliente extends JFrame {
 
 		JButton btn8 = new JButton("8");
 		btn8.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for button "8". Appends "8" to the text on the screen when the
+			 * button "8" is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "8");
 			}
@@ -185,6 +251,12 @@ public class Cliente extends JFrame {
 
 		JButton btn7 = new JButton("7");
 		btn7.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for button "7". Appends "7" to the text on the screen when the
+			 * button "7" is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "7");
 			}
@@ -195,6 +267,10 @@ public class Cliente extends JFrame {
 
 		JButton btn0 = new JButton("0");
 		btn0.addActionListener(new ActionListener() {
+			/**
+			 * Appends "0" to the text on the screen when the button "0" is clicked.
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "0");
 			}
@@ -205,6 +281,12 @@ public class Cliente extends JFrame {
 
 		JButton btnDot = new JButton(".");
 		btnDot.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the dot button. Appends a dot "." to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + ".");
 			}
@@ -218,6 +300,12 @@ public class Cliente extends JFrame {
 
 		JButton btnSum = new JButton("+");
 		btnSum.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the sum button. Appends a plus "+" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "+");
 			}
@@ -229,6 +317,12 @@ public class Cliente extends JFrame {
 
 		JButton btnSubs = new JButton("-");
 		btnSubs.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the Subs button. Appends a plus "-" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "-");
 			}
@@ -240,6 +334,12 @@ public class Cliente extends JFrame {
 
 		JButton btnMulti = new JButton("*");
 		btnMulti.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the multi button. Appends a plus "*" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "*");
 			}
@@ -251,6 +351,12 @@ public class Cliente extends JFrame {
 
 		JButton btnDivi = new JButton("/");
 		btnDivi.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the divi button. Appends a plus "/" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "/");
 			}
@@ -262,6 +368,12 @@ public class Cliente extends JFrame {
 
 		JButton btnPorcentage = new JButton("%");
 		btnPorcentage.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the module button. Appends a plus "%" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "%");
 			}
@@ -273,6 +385,12 @@ public class Cliente extends JFrame {
 
 		JButton btnLeftP = new JButton("(");
 		btnLeftP.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the left parenthesis button. Appends a plus "(" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "(");
 			}
@@ -284,6 +402,12 @@ public class Cliente extends JFrame {
 
 		JButton btnRightP = new JButton(")");
 		btnRightP.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the right parenthesis button. Appends a plus ")" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + ")");
 			}
@@ -296,6 +420,12 @@ public class Cliente extends JFrame {
 
 		JButton btnXOR = new JButton("^");
 		btnXOR.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the xor button. Appends a plus "^" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "^");
 			}
@@ -308,6 +438,12 @@ public class Cliente extends JFrame {
 
 		JButton btnAnd = new JButton("&");
 		btnAnd.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the and button. Appends a plus "&" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "&");
 			}
@@ -320,6 +456,12 @@ public class Cliente extends JFrame {
 
 		JButton btnOr = new JButton("|");
 		btnOr.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the or button. Appends a plus "|" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "|");
 			}
@@ -332,6 +474,12 @@ public class Cliente extends JFrame {
 
 		JButton btnNot = new JButton("~");
 		btnNot.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the not button. Appends a plus "~" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "~");
 			}
@@ -344,6 +492,12 @@ public class Cliente extends JFrame {
 
 		JButton btnV = new JButton("V");
 		btnV.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the true button. Appends a plus "V" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "V");
 			}
@@ -355,6 +509,12 @@ public class Cliente extends JFrame {
 
 		JButton btnF = new JButton("F");
 		btnF.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the false button. Appends a plus "F" to the text on the screen
+			 * when the button is clicked.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				txtScreen.setText(txtScreen.getText() + "F");
 			}
@@ -366,7 +526,11 @@ public class Cliente extends JFrame {
 
 		JButton btnAL = new JButton("AL");
 		btnAL.addActionListener(new ActionListener() {
-
+			/**
+			 * ActionListener for the "AL" button which toggles ari_log and updates the UI elements visibility accordingly.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				ari_log = !ari_log;
 				txtScreen.setText("");
@@ -434,6 +598,11 @@ public class Cliente extends JFrame {
 
 		JButton btnIgual = new JButton("=");
 		btnIgual.addActionListener(new ActionListener() {
+			/**
+			 * ActionListener for the "=" button. Sends the data from the text screen to a server.
+			 *
+			 * @param e The ActionEvent object representing the button click event.
+			 */
 			public void actionPerformed(ActionEvent e) {
 
 				send_data(txtScreen.getText());
@@ -445,7 +614,11 @@ public class Cliente extends JFrame {
 		btnIgual.setBounds(120, 258, 45, 36);
 		contentPane.add(btnIgual);
 	}
-
+	/**
+	 * Sends data to a server using a socket connection.
+	 *
+	 * @param data The data to be sent to the server.
+	 */
 	private void send_data(String data){
 		try{
 
@@ -468,6 +641,11 @@ public class Cliente extends JFrame {
 		}
 
 	}
+	/**
+	 * The main method that initializes the GUI frame and sets it to be visible.
+	 *
+	 * @param args The command-line arguments (unused).
+	 */
 	public static void main(String[] args) {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		EventQueue.invokeLater(new Runnable() {
