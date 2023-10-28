@@ -64,37 +64,38 @@ public class Camera extends JFrame{
     public Mat get_captured_image(){
         return captured_image;
     }
-    public void camera_start(){
+    public void camera_start() {
         capture = new VideoCapture(0);
         image = new Mat();
         byte[] image_data;
         ImageIcon icon;
 
-        while(true){
-            capture.read(image);
-            final MatOfByte buf = new MatOfByte();
-            Imgcodecs.imencode(".jpg", image, buf);
-            image_data = buf.toArray();
-            icon = new ImageIcon(image_data);
-            camera_screen.setIcon(icon);
+        while (true) {
+            if (capture.read(image)) {
+                final MatOfByte buf = new MatOfByte();
+                Imgcodecs.imencode(".jpg", image, buf);
+                image_data = buf.toArray();
+                icon = new ImageIcon(image_data);
+                camera_screen.setIcon(icon);
 
-            if(clicked){
-                clicked = false;
+                if (clicked) {
+                    clicked = false;
 
-                image_file = new File("temp_image.jpg");
-                Imgcodecs.imwrite(image_file.getAbsolutePath(),image);
+                    image_file = new File("temp_image.jpg");
+                    Imgcodecs.imwrite(image_file.getAbsolutePath(), image);
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        processOCR();
-                    }
-                }).start();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            processOCR();
+                        }
+                    }).start();
+
+                }
 
             }
 
         }
-
     }
 
     public void processOCR(){

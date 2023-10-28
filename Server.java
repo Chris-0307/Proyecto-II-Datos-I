@@ -19,6 +19,7 @@ public class Server{
                 String expression = parts[1];
 
                 String last_result;
+                String expression_csv = expression;
 
                 if (ari_log == false){
                     Bet_2 bet_2 = new Bet_2(expression);
@@ -29,6 +30,26 @@ public class Server{
                     last_result = String.valueOf(bet.evaluate_exp());
 
                 }
+
+                try{
+                    PrintWriter pw_csv = new PrintWriter(new FileWriter("Information.csv", true));
+                    StringBuilder sb_csv = new StringBuilder();
+
+                    sb_csv.append("\n");
+                    sb_csv.append(expression_csv);
+                    sb_csv.append(",");
+                    sb_csv.append(last_result);
+                    sb_csv.append(",");
+                    sb_csv.append(java.time.LocalDate.now());
+
+
+                    pw_csv.write(sb_csv.toString());
+                    pw_csv.close();
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+
 
                 OutputStream os = client_socket.getOutputStream();
                 PrintWriter pw = new PrintWriter(os, true);
